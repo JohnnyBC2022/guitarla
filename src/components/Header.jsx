@@ -1,27 +1,12 @@
-import { useMemo } from "react";
-
 const Header = ({
   cart,
   removeFromCart,
   decreaseQuantity,
   increaseQuantity,
   clearCart,
+  isEmpty,
+  cartTotal,
 }) => {
-  /*
-  State Derivado
-  const isEmpty = () => cart.length === 0;
-  */
-
-  // Usando useMemo para hacer la misma operación que antes, verificar que el carrito está vacío y calcular el total. Con useMemo, lo que hacemos es que no va a renderizar la aplicación hasta que cambie lo que le digamos. De la otra forma, cada vez que añadimos una guitarra al carrito, la aplicación va a renderizar.
-
-  const isEmpty = useMemo(() => cart.length === 0, [cart]);
-
-  const cartTotal = useMemo(
-    () =>
-      cart.reduce((total, guitar) => total + guitar.price * guitar.quantity, 0),
-    [cart]
-  );
-
   return (
     <header className="py-5 header">
       <div className="container-xl">
